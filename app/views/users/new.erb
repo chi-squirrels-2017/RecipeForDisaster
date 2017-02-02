@@ -1,0 +1,19 @@
+<h1>Register</h1>
+
+<div class="container">
+<li><% if @errors %>
+    <% @errors.each do |error| %>
+        <p><%= error %></p>
+    <% end %>
+<% end%></li>
+<form method="post" action="/users">
+<ul class="form">
+    <li><input type="text" name="user[username]" placeholder="username"></li>
+    <li><input type="text" name="user[email]" placeholder="email"></li>
+    <li><input type="password" name="user[password]" placeholder="Password"></li>
+    <li>
+        <button class="button" type="submit">Register</button>
+    </li>
+</ul>
+</form>
+</div>

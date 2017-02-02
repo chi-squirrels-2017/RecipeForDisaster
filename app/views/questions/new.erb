@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h1 class="main-title">Create New Post</h1>
+
+  <form id="editform" method="post" action="/questions">
+    <input name="question[user_id]" type="hidden" value="<%= session[:user] %>">
+    <h2>Title: </h2><input name="question[title]" type="text" placeholder="Title" required>
+    <h2>Body:</h2>
+    <textarea rows="4" cols="50" name="question[body]" form="editform" placeholder="Type Description Here"></textarea>
+    <br><br>
+    <button type="submit">Save Article</button>
+
+  </form>
+</div>

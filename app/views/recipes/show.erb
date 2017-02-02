@@ -1,0 +1,30 @@
+<section>
+  <table>
+    <tr>
+      <th>This is the @recipe! (we don't have a name)</th>
+    </tr>
+    <tr>
+      <td>This is the @recipe body!</td>
+    </tr>
+    <tr>
+      <td>submitted by: @recipe.user.username </td>
+    </tr>
+  </table>
+</section>
+<section>
+<% if @comments %>
+  <% @comments.each do |comment| %>
+  <table>
+    <tr>
+      <th>This is the comment (we don't have a name)</th>
+    </tr>
+    <tr>
+      <td>This is the comment body!</td>
+    </tr>
+    <tr>
+      <td>submitted by: comment.user.username </td>
+    </tr>
+  </table>
+  <% end %>
+<% end %>
+</section>

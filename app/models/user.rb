@@ -5,9 +5,8 @@ class User < ActiveRecord::Base
   has_many :recipes
 
   include BCrypt
-  validates :email, :presence => true
-  validates :hashed_password, :presence => true
-  validates :email, :uniqueness => true
+  validates_presence_of :username, :email, :hashed_password
+  validates_uniqueness_of :email, :username
 
   def password
     @password ||= Password.new(hashed_password)

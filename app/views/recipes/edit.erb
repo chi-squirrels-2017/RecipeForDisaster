@@ -1,0 +1,22 @@
+<!-- FORM TO EDIT EXISTING RECIPE -->
+<% if @errors %>
+  <% @errors.each do |error| %>
+  <p><%= error %></p>
+  <% end %>
+<% end %>
+<section>
+  <form action= <%= "/questions/#{params[:question_id]}/recipes/#{params[:recipe_id]}" %> method='POST'>
+    <input type='hidden' name='_method' value='PUT'>
+    <label>Enter your sultry-sweet recipe here!</label>
+    <br>
+    <br>
+    <!-- TODO: use recipe hash inside params to clean? -->
+    <textarea name='recipe_body' rows='20' cols='60'><%= @recipe.body %></textarea>
+    <br>
+    <br>
+    <input type='submit' value='Submit Recipe'>
+    <!-- <input type='hidden' name='recipe_id' value='params[:recipe_id]'> -->
+    <!-- <input type='hidden' name='user_id' value='session[:user]'> -->
+    <!-- <input type='hidden' name='question_id' value='params[:question_id]'> -->
+  </form>
+</section>

@@ -17,7 +17,7 @@ end
 250.times do
   Comment.create(
                body: Faker::ChuckNorris.fact,
-                user_id: rand(1..50),
+                user_id: rand(1..10),
                 commentable_id: rand(1..50),
                 commentable_type: ["Question", "Recipe"].sample
               )
@@ -26,7 +26,8 @@ end
 250.times do
   Vote.create(
            voteable_id: rand(1..50),
-            voteable_type: ["Question", "Recipe"].sample,
+            voteable_type: ["Question", "R
+              ecipe"].sample,
             up_vote: [false, true].sample,
             user_id: rand(1..10)
           )

@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-  <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
-  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/normalize.css?app=skills">
+  <link rel="stylesheet" href="/css/application.css?app=skills">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
+  <script src="/js/application.js?app=skills"></script>
 
-  <title></title>
-</head>
+  <title>Recipe for Disaster</title>
+
+
 <body>
+  <h1>Recipe for Disaster</h1>
+  <% if current_user %>
+    <nav class="line bar"
+   <li> Welcome, <%= current_user.username %></li>
+    <li class="home">
+          <a href="/">home</a>
+      </li>
+      <li class="questions">
+          <a href="/questions/index">questions</a>
+      </li>
+      </li>
+    <li class="logout button">
+    <form class="button" method="post" action="/sessions">
+        <input type="hidden" name="_method" value="delete">
+        <button id="logout-button" type="submit">Logout</button>
+    </form>
+  <% else %>
+    </li>
+       <ul class="login line">
+      <li class="home">
+          <a href="/">home</a>
+      </li>
+      <li class="login">
+          <a href="/sessions/new">login</a>
+      </li>
+      <li class="register">
+          <a href="/users/new">register</a>
+      </li>
+      </ul>
+      <% end %>
   <%= yield %>
 </body>
 </html>

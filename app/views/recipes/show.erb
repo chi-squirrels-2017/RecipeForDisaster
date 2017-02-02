@@ -11,20 +11,11 @@
     </tr>
   </table>
 </section>
+
 <section>
 <% if @comments %>
   <% @comments.each do |comment| %>
-  <table>
- <!--    <tr>
-      <th>This is the comment (we don't have a name)</th>
-    </tr> -->
-    <tr>
-      <td><%=  comment.body %></td>
-    </tr>
-    <tr>
-      <td>submitted by: <%= comment.user.username %> </td>
-    </tr>
-  </table>
+  <!-- <%= erb heshams partial name%>  -->
   <% end %>
 <% end %>
 </section>

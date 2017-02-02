@@ -1,0 +1,8 @@
+<h1>Current Questions: </h1>
+
+<div class="question-list">
+  <% @questions.each do |question| %>
+  <h2><%= question.title  %></h2>
+  <a href=<%= "/users/#{question.user.username}" %>><%= question.user %></a>
+  <% end %>
+</div>

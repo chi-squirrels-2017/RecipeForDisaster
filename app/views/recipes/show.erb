@@ -1,13 +1,13 @@
 <section>
   <table>
-    <tr>
+   <!--  <tr>
       <th>This is the @recipe! (we don't have a name)</th>
+    </tr> -->
+    <tr>
+      <td><%= @recipe.body %> </td>
     </tr>
     <tr>
-      <td>This is the @recipe body!</td>
-    </tr>
-    <tr>
-      <td>submitted by: @recipe.user.username </td>
+      <td>submitted by: <%= @recipe.user.username %> </td>
     </tr>
   </table>
 </section>
@@ -15,14 +15,14 @@
 <% if @comments %>
   <% @comments.each do |comment| %>
   <table>
-    <tr>
+ <!--    <tr>
       <th>This is the comment (we don't have a name)</th>
+    </tr> -->
+    <tr>
+      <td><%=  comment.body %></td>
     </tr>
     <tr>
-      <td>This is the comment body!</td>
-    </tr>
-    <tr>
-      <td>submitted by: comment.user.username </td>
+      <td>submitted by: <%= comment.user.username %> </td>
     </tr>
   </table>
   <% end %>

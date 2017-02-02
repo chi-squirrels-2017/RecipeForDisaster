@@ -1,0 +1,20 @@
+<!-- form to create NEW RECIPE OMG -->
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+<section>
+  <form action='/questions/:question_id/recipes' method='POST'>
+    <label>Enter your sultry-sweet recipe here!</label>
+    <br>
+    <br>
+    <!-- TODO: use recipe hash inside params to clean? -->
+    <textarea name='recipe_body' rows='20' cols='60' placeholder='Share that tasty knowledge!'></textarea>
+    <br>
+    <br>
+    <input type='submit' value='Submit Recipe'>
+    <input type='hidden' name='user_id' value='session[:user]'>
+    <input type='hidden' name='question_id' value='params[:question_id]'>
+  </form>
+</section>

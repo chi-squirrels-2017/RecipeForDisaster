@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h1 class="main-title"><%= @question.title %></h1>
+
+  <h2>Author:</h2>
+  <p><%= @question.user.username %></p>
+
+  <h2>Question: </h2>
+  <p><%= @question.body %></p>
+
+  <% if @question.user_id == session[:user] %>
+
+    <form method="get" action=<%= "/questions/@question.id/edit"%>>
+      <button type="submit">Edit Article</button>
+    </form>
+
+    <br>
+    <form method="post" action=<%= "/questions/@question.id" %>>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Article">
+    </form>
+
+  <% end %>
+
+</div>

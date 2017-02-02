@@ -4,10 +4,15 @@ get '/questions' do
   erb :'questions/index'
 end
 
+get '/questions/new' do
+
+end
+
 post '/questions' do
 
 
 end
+
 
 get '/questions/:question_id' do
 

@@ -1,8 +1,14 @@
+<div class="new-question-form">
+  <form method="get" action="/questions/new">
+    <button type="submit">Create New Article</button>
+  </form>
+</div>
+
 <h1>Current Questions: </h1>
 
 <div class="question-list">
   <% @questions.each do |question| %>
   <h2><%= question.title  %></h2>
-  <a href=<%= "/users/#{question.user.username}" %>><%= question.user %></a>
+  <a href=<%= "/users/#{question.user.id}" %>><%= question.user.username %></a>
   <% end %>
 </div>

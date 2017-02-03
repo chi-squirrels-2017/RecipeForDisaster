@@ -1,7 +1,44 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  upVote();
+  downVote();
 });
+
+var upVote = function() {
+  $('.upvote-form').on('submit', function(e) {
+    e.preventDefault();
+    var $form = $(this);
+    var url = $form.attr('action');
+    var method = $form.attr('method');
+    var data = {up_vote: 'true'};
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    })
+    .done(function(response) {
+      $($form.find('span.up-points')).html(response.upvotes);
+    })
+  })
+}
+
+var downVote = function() {
+  $('.downvote-form').on('submit', function(e) {
+    e.preventDefault();
+    var $form = $(this);
+    var url = $form.attr('action');
+    var method = $form.attr('method');
+    var data = {up_vote: 'false'};
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    })
+    .done(function(response) {
+
+      $($form.find('span.down-points')).html(response.downvotes);
+    })
+  })
+}
+

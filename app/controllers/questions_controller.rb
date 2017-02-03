@@ -4,7 +4,7 @@ get '/questions' do
   erb :'questions/index'
 end
 
-get '/questions/new' do  
+get '/questions/new' do
   if session[:user]
     erb :'questions/new'
   else
@@ -36,7 +36,13 @@ end
 post '/questions/:question_id/votes' do
   @question = Question.find_by_id(params[:question_id])
   @question.votes.create(up_vote: params[:up_vote])
-  redirect "/questions"
+  # p request
+  if request.xhr?
+    content_type :json
+    {upvotes: @question.up_points, downvotes: @question.down_points}.to_json
+  else
+    redirect "/questions"
+  end
 end
 
 

@@ -5,7 +5,7 @@
   <% end %>
 <% end %>
 <section>
-  <form action= <%="/questions/#{@question.id}/recipes"%> method="POST">
+  <form action="/questions/<%= @question.id %>/recipes" method="POST">
     <label>Enter your sultry-sweet recipe here!</label>
     <br>
     <br>

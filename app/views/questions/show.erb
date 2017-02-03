@@ -21,8 +21,9 @@
     </form>
 
   <% end %>
-  <form method='get' action=<%= "/questions/#{@question.id}/recipes/new" %>>
-    <input type='submit' value='Share a Recipe!'>
-  </form>
+
+  <button>
+    <a href=<%= "/questions/#{@question.id}/recipes/new" %>>Share a Recipe!</a>
+  </button>
 
 </div>

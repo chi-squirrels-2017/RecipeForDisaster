@@ -1,9 +1,44 @@
 .container {
   margin: 20px auto;
   width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  padding: 0px 20px 0px 20px;
 }
 th {
   text-align: left;
+}
+
+.main-page {
+  /*margin: 0 10% 0 10%;*/
+  /*color: #563E7C;*/
+  /*background-color: #7BC5F6;*/
+}
+
+.post-container {
+  margin: 0 20% 0 20%;
+}
+
+.main-title {
+  font-size: 40px;
+}
+
+.author {
+  padding: 0px 0px 0px 20px;
+}
+
+.question-title {
+  font-size: 30px;
+  color: #939191;
+}
+
+.question-body {
+  font-size: 20px;
+}
+
+.form-title {
+  font-size: 30px;
+}
+
+.form-title-input {
+  height: 25px;
+  width: 300px;
 }

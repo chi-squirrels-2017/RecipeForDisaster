@@ -1,17 +1,40 @@
-<% if session[:user] %>
-  <div class="new-question-form">
-    <form method="get" action="/questions/new">
-      <button type="submit">Create New Article</button>
-    </form>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <% if session[:user] %>
+    <div class="new-question-form">
+      <form method="get" action="/questions/new">
+        <button id="new-article" type="submit">Create New Post</button>
+      </form>
+    </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="col-md-4"></div>
+</div> 
 
-<h1>Current Questions: </h1>
 
-<div class="question-list">
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h1>Current Questions: </h1>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+<div class='post-container'>
   <% @questions.each do |question| %>
-  <h2><a href=<%= "/questions/#{question.id}" %>><%= question.title  %></a></h2>
-  <a href=<%= "/users/#{question.user.id}" %>><%= question.user.username %></a>
+
+  <article id = "<%= question.id %>">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h2><a href=<%= "/questions/#{question.id}" %>><%= question.title  %></a></h2>
+  </div>
+  <div class="panel-footer">  <a href=<%= "/users/#{question.user.id}" %>><%= question.user.username %></a></div>
+</div>
+
+  <% end %>
+</div>
 
   <form method="post" action="/questions/<%= question.id %>/votes"class="inline">
   <button type="submit" name="up_vote" value="true" class="upvote-button"></button>

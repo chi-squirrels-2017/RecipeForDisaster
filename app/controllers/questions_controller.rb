@@ -1,12 +1,10 @@
-require 'pry'
-
 get '/questions' do
   @questions = Question.all
 
   erb :'questions/index'
 end
 
-get '/questions/new' do
+get '/questions/new' do  
   if session[:user]
     erb :'questions/new'
   else
@@ -15,7 +13,6 @@ get '/questions/new' do
 end
 
 post '/questions' do
-
   @question = Question.create(params[:question])
 
   redirect '/questions'

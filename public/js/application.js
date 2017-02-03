@@ -1,15 +1,13 @@
 $(document).ready(function() {
   upVote();
+  downVote();
 });
 
 var upVote = function() {
-  $('.vote-form').on('submit', function(e) {
+  $('.upvote-form').on('submit', function(e) {
     e.preventDefault();
     var $form = $(this);
-    console.log($form);
-    // var $form = $button.closest('form');
     var url = $form.attr('action');
-    console.log(url);
     var method = $form.attr('method');
     var data = {up_vote: 'true'};
 
@@ -19,9 +17,28 @@ var upVote = function() {
       data: data
     })
     .done(function(response) {
-      console.log(response.upvotes);
-      console.log($($form.find('span.up-points')));
       $($form.find('span.up-points')).html(response.upvotes);
     })
   })
 }
+
+var downVote = function() {
+  $('.downvote-form').on('submit', function(e) {
+    e.preventDefault();
+    var $form = $(this);
+    var url = $form.attr('action');
+    var method = $form.attr('method');
+    var data = {up_vote: 'false'};
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    })
+    .done(function(response) {
+
+      $($form.find('span.down-points')).html(response.downvotes);
+    })
+  })
+}
+

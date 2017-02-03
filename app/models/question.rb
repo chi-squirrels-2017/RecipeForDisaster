@@ -5,10 +5,10 @@ class Question < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   def up_points
-    (self.votes.select  {|each_vote| each_vote.up_vote == true}).length
+    self.votes.where(["up_vote = ?", true]).count
   end
 
   def down_points
-    (self.votes.select  {|each_vote| each_vote.up_vote == false}).length
+    self.votes.where(["up_vote = ?", false]).count
   end
 end

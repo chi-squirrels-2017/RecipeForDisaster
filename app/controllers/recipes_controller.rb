@@ -9,7 +9,7 @@ post '/questions/:question_id/recipes' do
   # TODO: clean this noise - use recipe hash inside params?
   recipe = Recipe.new(question_id: params[:question_id], user_id: params[:user_id], body: params[:recipe_body], best_answer: false)
   if recipe.save
-    redirect "/questions/#{params[:question_id]}/recipes/#{recipe.id}"
+    redirect "/questions/#{params[:question_id]}"
   else
     @errors = recipe.errors.full_messages
     erb :'recipes/new'

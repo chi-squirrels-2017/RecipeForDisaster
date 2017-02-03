@@ -6,11 +6,11 @@ class Recipe < ActiveRecord::Base
 
 
   def up_points
-    (votes.select do {|each_vote| votes.up_vote == true}).length
+    (self.votes.select  {|each_vote| each_vote.up_vote == true}).length
   end
 
   def down_points
-    (votes.select do {|each_vote| votes.up_vote == false}).length
+    (self.votes.select  {|each_vote| each_vote.up_vote == false}).length
   end
 
 end

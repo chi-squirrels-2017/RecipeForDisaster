@@ -3,9 +3,9 @@ get '/' do
   redirect '/questions'
 end
 
-post '/answers/:id/vote' do
-  post = Answer.find(params[:id])
-  post.votes.create(up_vote: 1)
-  redirect "/posts"
+post 'questions/:question_id/recipes/:recipe_id/votes' do
+  recipe = Recipe.find(params[:recipe_id])
+  answer.votes.create(up_vote: params[:up_vote])
+  redirect "/questions"
 
 end

@@ -48,3 +48,10 @@ delete '/questions/:question_id/recipes/:recipe_id' do
     recipe.destroy
     redirect '/' #redirect to previous show page
   end
+
+post '/questions/:question_id/recipes/:recipe_id/votes' do
+  @question = Question.find_by_id(params[:question_id])
+  @recipe = Recipe.find_by_id(params[:recipe_id])
+  @recipe.votes.create(up_vote: params[:up_vote])
+  redirect "/questions"
+end

@@ -11,7 +11,7 @@ end
 end
 
 50.times do
-  Recipe.create(question_id: rand(1..50), user_id: rand(1..10), body: Faker::Lorem.paragraph)
+  Recipe.create(question_id: rand(1..50), user_id: rand(1..10), body: Faker::Lorem.paragraph, best_answer: false)
 end
 
 250.times do

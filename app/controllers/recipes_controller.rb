@@ -32,6 +32,7 @@ get '/questions/:question_id/recipes/:recipe_id/edit' do
 end
 
 put '/questions/:question_id/recipes/:recipe_id' do
+  @question = Question.find_by(id: params[:question_id])
   @recipe = Recipe.find_by(id: params[:recipe_id])
   @recipe.update_attribute(:body, params[:recipe_body])#replace due to bypass validations
   if @recipe.save

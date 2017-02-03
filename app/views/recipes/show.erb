@@ -15,15 +15,14 @@
 <!-- edit/delete buttons here -->
 <% if @recipe.user_id == session[:user] %>
 
-  <form method="post" action=<%= "/questions/#{@question.id}/recipes/#{@recipe.id}/edit" %> >
-    <input type="hidden" name="_method" value="put">
-    <button type="submit">Edit Article</button>
-  </form>
+  <button>
+    <a href=<%="/questions/#{@question.id}/recipes/#{@recipe.id}/edit"%>>Edit Recipe</a>
+  </button>
 
   <br>
   <form method="post" action=<%= "/questions/#{@question.id}/recipes/#{@recipe.id}" %> >
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Article">
+    <input type="submit" value="Delete Recipe">
   </form>
 
 <% end %>

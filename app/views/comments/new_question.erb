@@ -1,3 +1,9 @@
+<% if @errors %>
+  <% @errors.each do |error| %>
+   <h3 class="error-message"> <%= error %> </h3>
+  <% end %>
+<% end %>
+
 <form action="/questions/<%=@question.id%>/comments" method="post">
   <%= erb(:_comment) %>
 </form>

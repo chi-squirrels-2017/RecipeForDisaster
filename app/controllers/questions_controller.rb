@@ -33,4 +33,10 @@ get '/questions/:question_id/edit' do
 
 end
 
+post '/questions/:question_id/votes' do
+  @question = Question.find_by_id(params[:question_id])
+  @question.votes.create(up_vote: params[:up_vote])
+  redirect "/questions"
+end
+
 

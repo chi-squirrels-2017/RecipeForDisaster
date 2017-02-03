@@ -1,6 +1,7 @@
 
 get '/questions/:question_id/recipes/new' do
   @question = Question.find_by(id: params[:question_id])
+  @user_id = session[:user]
   erb :'recipes/new'
 end
 

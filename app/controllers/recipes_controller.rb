@@ -20,15 +20,22 @@ end
 get '/questions/:question_id/recipes/:recipe_id' do
   @recipe = Recipe.find_by(id: params[:recipe_id])
   @question = Question.find_by(id: params[:question_id])
-
   @comments = Comment.where(commentable_id: params[:recipe_id], commentable_type: 'Recipe')
-  erb :'recipes/show'
+  if @recipe && @question
+    erb :'recipes/show'
+  else
+    erb :'_404'
+  end
 end
 
 get '/questions/:question_id/recipes/:recipe_id/edit' do
   @recipe = Recipe.find_by(id: params[:recipe_id])
   @question = Question.find_by(id: params[:question_id])
-  erb :'recipes/edit'
+  if @recipe && @question
+    erb :'recipes/edit'
+  else
+    erb :'_404'
+  end
 end
 
 put '/questions/:question_id/recipes/:recipe_id' do

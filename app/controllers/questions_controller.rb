@@ -7,7 +7,6 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  binding.pry
   if session[:user]
     erb :'questions/new'
   else
@@ -16,7 +15,6 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  binding.pry
 
   @question = Question.create(params[:question])
 

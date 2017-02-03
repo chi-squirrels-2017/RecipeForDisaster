@@ -5,7 +5,7 @@
   <% end %>
 <% end %>
 <section>
-  <form action= <%= "/questions/#{params[:question_id]}/recipes/#{params[:recipe_id]}" %> method='POST'>
+  <form action= <%= "/questions/#{@question.id}/recipes/#{@recipe.id}" %> method='POST'>
     <input type='hidden' name='_method' value='PUT'>
     <label>Enter your sultry-sweet recipe here!</label>
     <br>

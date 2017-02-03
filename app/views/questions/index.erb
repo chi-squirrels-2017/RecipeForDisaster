@@ -12,5 +12,12 @@
   <% @questions.each do |question| %>
   <h2><a href=<%= "/questions/#{question.id}" %>><%= question.title  %></a></h2>
   <a href=<%= "/users/#{question.user.id}" %>><%= question.user.username %></a>
+
+  <form method="post" action="/questions/<%= question.id %>/votes"class="inline">
+  <button type="submit" name="up_vote" value="true" class="upvote-button"></button>
+  <span class='points'><%= question.up_points %></span>
+  <button type="submit" name="up_vote" value="false" class="downvote-button"></button>
+  <span class='points'><%= question.down_points %></span></form>
   <% end %>
 </div>
+

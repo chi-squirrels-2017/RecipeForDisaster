@@ -5,4 +5,13 @@ class Recipe < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   validates :body, presence: true
+
+  def up_points
+    (self.votes.select  {|each_vote| each_vote.up_vote == true}).length
+  end
+
+  def down_points
+    (self.votes.select  {|each_vote| each_vote.up_vote == false}).length
+  end
+
 end

@@ -35,11 +35,13 @@
 
 </div>
 
-  <form method="post" action="/questions/<%= question.id %>/votes"class="inline">
+  <form method="post" action="/questions/<%= question.id %>/votes" class="inline upvote-form">
   <button type="submit" name="up_vote" value="true" class="upvote-button"></button>
-  <span class='points'><%= question.up_points %></span>
+  <span class='up-points'><%= question.up_points %></span></form>
+  <form method="post" action="/questions/<%= question.id %>/votes" class="inline downvote-form">
   <button type="submit" name="up_vote" value="false" class="downvote-button"></button>
-  <span class='points'><%= question.down_points %></span></form>
+  <span class='down-points'><%= question.down_points %></span></form>
+
   <% end %>
 
 </div>

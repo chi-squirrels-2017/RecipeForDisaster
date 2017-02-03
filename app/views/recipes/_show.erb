@@ -28,8 +28,7 @@
 </button>
 <% if recipe.comments %>
   <% recipe.comments.each do |comment| %>
-  <p><%= comment.body %> </p>
-  <p> <%= comment.user.username %>  </p>
+    <%= erb :'comments/_show', locals: { comment: comment} %>
   <% end %>
 <% end %>
 </section>

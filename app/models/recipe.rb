@@ -15,7 +15,6 @@ class Recipe < ActiveRecord::Base
   end
 
   def voted_as_best
-
+    self.update_attribute(:best_answer, true)
   end
-
 end

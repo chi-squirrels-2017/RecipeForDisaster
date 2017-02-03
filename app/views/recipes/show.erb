@@ -9,7 +9,7 @@
 </section>
 
 <!-- edit/delete buttons here -->
-<% if @recipe.user_id == current_user.id %>
+<% if @recipe.user_id == session[:user] %>
 
   <button>
     <a href=<%="/questions/#{@question.id}/recipes/#{@recipe.id}/edit"%>>Edit Recipe</a>

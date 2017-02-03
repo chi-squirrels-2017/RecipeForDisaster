@@ -1,22 +1,21 @@
-<h1>NOT A PARTIAL YO YO YO POOP</h1>
 <section>
 
   <p>RECIPE BODY</p>
-  <p><%= @recipe.body %> </p>
+  <p><%= recipe.body %> </p>
   <p>RECIPE WRITER</p>
-  <p>submitted by: <%= @recipe.user.username %> </p>
+  <p>submitted by: <%= recipe.user.username %> </p>
 
 </section>
 
 <!-- edit/delete buttons here -->
-<% if @recipe.user_id == current_user.id %>
+<% if recipe.user_id == current_user.id %>
 
   <button>
-    <a href=<%="/questions/#{@question.id}/recipes/#{@recipe.id}/edit"%>>Edit Recipe</a>
+    <a href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/edit"%>>Edit Recipe</a>
   </button>
 
   <br>
-  <form method="post" action=<%= "/questions/#{@question.id}/recipes/#{@recipe.id}" %> >
+  <form method="post" action=<%= "/questions/#{@question.id}/recipes/#{recipe.id}" %> >
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Recipe">
   </form>
@@ -25,7 +24,7 @@
 <section>
 <p>THESE ARE THE COMMENTS</p>
 <button>
-  <a href=<%="/questions/#{@question.id}/recipes/#{@recipe.id}/comments/new"%>>New Comment</a>
+  <a href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
 </button>
 <% if @comments %>
   <% @comments.each do |comment| %>

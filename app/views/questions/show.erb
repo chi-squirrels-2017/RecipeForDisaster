@@ -25,5 +25,7 @@
   <button>
     <a href=<%= "/questions/#{@question.id}/recipes/new" %>>Share a Recipe!</a>
   </button>
-
+  <% @question.recipes.each do |recipe| %>
+  <%= erb :'recipes/_show', locals: {  recipe: recipe } %>
+  <% end %>
 </div>

@@ -6,7 +6,7 @@ post "/sessions" do
   user = User.find_by(username: params[:username])
   if user && user.authenticate?(params[:password])
     session[:user] = user.id
-    redirect "/users/#{user.id}"
+    redirect "/"
   else
     @error = "Incorrect login"
     erb :"sessions/new"

@@ -1,0 +1,34 @@
+<section>
+
+  <p>RECIPE BODY</p>
+  <p><%= recipe.body %> </p>
+  <p>RECIPE WRITER</p>
+  <p>submitted by: <%= recipe.user.username %> </p>
+
+</section>
+
+<!-- edit/delete buttons here -->
+<% if recipe.user_id == session[:user] %>
+
+  <button>
+    <a href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/edit"%>>Edit Recipe</a>
+  </button>
+
+  <br>
+  <form method="post" action=<%= "/questions/#{@question.id}/recipes/#{recipe.id}" %> >
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Recipe">
+  </form>
+
+<% end %>
+<section>
+<p>THESE ARE THE COMMENTS</p>
+<button>
+  <a href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
+</button>
+<% if recipe.comments %>
+  <% recipe.comments.each do |comment| %>
+    <%= erb :'comments/_show', locals: { comment: comment} %>
+  <% end %>
+<% end %>
+</section>

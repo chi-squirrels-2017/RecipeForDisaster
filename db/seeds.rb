@@ -2,8 +2,8 @@ require 'faker'
 
 10.times do
   User.create(
-               username: Faker::Internet.user_name,
-                email: Faker::Internet.email, hashed_password: ("a".."z").to_a.sample(13).join)
+              username: Faker::Internet.user_name,
+              email: Faker::Internet.email, password: ("a".."z").to_a.sample(13).join)
 end
 
 50.times do

@@ -1,15 +1,11 @@
+<h1>NOT A PARTIAL YO YO YO POOP</h1>
 <section>
-  <table>
-   <!--  <tr>
-      <th>This is the @recipe! (we don't have a name)</th>
-    </tr> -->
-    <tr>
-      <td><%= @recipe.body %> </td>
-    </tr>
-    <tr>
-      <td>submitted by: <%= @recipe.user.username %> </td>
-    </tr>
-  </table>
+
+  <p>RECIPE BODY</p>
+  <p><%= @recipe.body %> </p>
+  <p>RECIPE WRITER</p>
+  <p>submitted by: <%= @recipe.user.username %> </p>
+
 </section>
 
 <!-- edit/delete buttons here -->
@@ -27,9 +23,14 @@
 
 <% end %>
 <section>
+<p>THESE ARE THE COMMENTS</p>
+<button>
+  <a href=<%="/questions/#{@question.id}/recipes/#{@recipe.id}/comments/new"%>>New Comment</a>
+</button>
 <% if @comments %>
   <% @comments.each do |comment| %>
-
+  <p> <%= comment.body %> </p>
+  <p> <%= comment.user.username %></p>
   <% end %>
 <% end %>
 </section>

@@ -39,7 +39,7 @@ post '/questions/:question_id/votes' do
   # p request
   if request.xhr?
     content_type :json
-    {upvotes: @question.votes.where(["up_vote = ?", true]).count, downvotes: @question.votes.where(["up_vote = ?", false]).count}.to_json
+    {upvotes: @question.up_points, downvotes: @question.down_points}.to_json
   else
     redirect "/questions"
   end

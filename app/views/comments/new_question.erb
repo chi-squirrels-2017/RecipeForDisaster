@@ -4,6 +4,6 @@
   <% end %>
 <% end %>
 
-<form action="/questions/<%=@question.id%>/comments" method="post">
+<form class="new-comment-form" action="/questions/<%=@question.id%>/comments" method="post">
   <%= erb(:_comment) %>
 </form>

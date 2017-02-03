@@ -1,7 +1,11 @@
 get '/questions/:question_id/comments/new' do
   if logged_in?
     @question = Question.find_by_id(params[:question_id])
-    erb :'comments/new_question'
+    if request.xhr?
+      erb :'comments/new_question', layout: false
+    else
+      erb :'comments/new_question'
+    end
   else
     erb :'sessions/new'
   end
@@ -12,7 +16,12 @@ post '/questions/:question_id/comments' do
     @question = Question.find_by_id(params[:question_id])
     @comment = @question.comments.create(params[:comment])
     if @comment.save
-      redirect "/questions/#{@question.id}"
+      if request.xhr?
+        content_type :json
+        {comment: @comment.body, user: @comment.user.username}.to_json
+      else
+        redirect "/questions/#{@question.id}"
+      end
     else
       @errors = @comment.errors.full_messages
       erb :'comments/new_question'

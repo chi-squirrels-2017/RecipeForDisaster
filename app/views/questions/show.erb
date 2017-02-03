@@ -25,15 +25,17 @@
   <button>
     <a class="new-recipe-button" href=<%= "/questions/#{@question.id}/recipes/new" %>>Share a Recipe!</a>
   </button>
-  <p>Question Comments: </p>
+  <p class="question-comments">Question Comments: </p>
   <button>
-    <a href=<%="/questions/#{@question.id}/comments/new"%>>New Comment</a>
+    <a class="new-comment-button" href=<%="/questions/#{@question.id}/comments/new"%>>New Comment</a>
   </button>
-  <% if @question.comments %>
-    <% @question.comments.each do |comment| %>
-      <%= erb :'comments/_show', locals: { comment: comment} %>
+  <div class='all-comments'>
+    <% if @question.comments %>
+      <% @question.comments.each do |comment| %>
+        <%= erb :'comments/_show', locals: { comment: comment} %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
   <% @question.recipes.each do |recipe| %>
     <%= erb :'recipes/_show', locals: {  recipe: recipe } %>

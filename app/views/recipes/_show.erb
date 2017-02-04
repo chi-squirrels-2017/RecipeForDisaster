@@ -9,20 +9,20 @@
     <img id='winner-icon' src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZhNqd6H9ldLCUj6LBY3qMTh-LVM10tT_wgTyh_qVV7fEw0eJJ">
   </section>
 <% end %>
-<% if logged_in? && @question.user.id == current_user.id && @question.has_no_winning_vote %>
+<% if logged_in? && question.user.id == current_user.id && @question.has_no_winning_vote %>
 
-<form id='choose-winner' method='POST' action=<%= "/questions/#{@question.id}/recipes/#{recipe.id}/winners/new" %>>
+<form id='choose-winner' method='POST' action=<%= "/questions/#{question.id}/recipes/#{recipe.id}/winners/new" %>>
   <input type='hidden' name='_method' value='PUT'>
   <input type='submit' value='TEH BAAAST'>
 </form>
 
 <% end %>
 
-  <form method="post" action="/questions/<%= @question.id %>/recipes/<%= recipe.id %>/votes" class="inline upvote-form">
+  <form method="post" action="/questions/<%= question.id %>/recipes/<%= recipe.id %>/votes" class="inline upvote-form">
   <button type="submit" name="up_vote" value="true" class="upvote-button"></button>
   <span class='up-points'><%= recipe.up_points %></span></form>
 
-  <form method="post" action="/questions/<%= @question.id %>/recipes/<%= recipe.id %>/votes" class="inline downvote-form">
+  <form method="post" action="/questions/<%= question.id %>/recipes/<%= recipe.id %>/votes" class="inline downvote-form">
   <button type="submit" name="up_vote" value="false" class="downvote-button"></button>
   <span class='down-points'><%= recipe.down_points %></span></form>
 
@@ -32,11 +32,11 @@
 <% if recipe.user_id == session[:user] %>
 
   <button>
-    <a href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/edit"%>>Edit Recipe</a>
+    <a href=<%="/questions/#{question.id}/recipes/#{recipe.id}/edit"%>>Edit Recipe</a>
   </button>
 
   <br>
-  <form method="post" action=<%= "/questions/#{@question.id}/recipes/#{recipe.id}" %> >
+  <form method="post" action=<%= "/questions/#{question.id}/recipes/#{recipe.id}" %> >
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Recipe">
   </form>
@@ -45,7 +45,7 @@
 <section>
 <p>THESE ARE THE COMMENTS</p>
 <button>
-  <a class="new-comment-button"  href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
+  <a class="new-comment-button" href=<%="/questions/#{question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
 </button>
 
 <% if recipe.comments %>

@@ -22,10 +22,10 @@
 
   <% end %>
 
-  <button>
-    <a class="new-recipe-button" href=<%= "/questions/#{@question.id}/recipes/new" %>>Share a Recipe!</a>
+  <button class="new-recipe-button">
+    <a href=<%= "/questions/#{@question.id}/recipes/new" %>>Share a Recipe!</a>
   </button>
-  <p>Question Comments: </p>
+  <p id="comment-header">Question Comments: </p>
   <button>
     <a href=<%="/questions/#{@question.id}/comments/new"%>>New Comment</a>
   </button>
@@ -36,6 +36,7 @@
   <% end %>
 
   <% @question.recipes.each do |recipe| %>
-    <%= erb :'recipes/_show', locals: {  recipe: recipe } %>
+    <%= erb :'recipes/_show', locals: {  recipe: recipe, question: @question } %>
   <% end %>
+  <div id="recipe-end"></div>
 </div>

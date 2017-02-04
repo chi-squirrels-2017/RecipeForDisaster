@@ -1,6 +1,7 @@
 $(document).ready(function() {
   upVote();
   downVote();
+  showRecipeForm();
 });
 
 var upVote = function() {
@@ -40,5 +41,39 @@ var downVote = function() {
       $($form.find('span.down-points')).html(response.downvotes);
     })
   })
+}
+
+var showRecipeForm = function() {
+  $('.new-recipe-button a').on('click', function(e) {
+    e.preventDefault();
+
+    var ajaxRequest = $.ajax({
+      url: $(this).attr('href'),
+      type: 'GET'
+    });
+
+    ajaxRequest.done( function(response) {
+      $('#comment-header').before(response);
+      $('.new-recipe-button').hide();
+    });
+  });
+
+  $('.container').on('submit', '.new-recipe-form', function(e) {
+    e.preventDefault();
+
+    var ajaxSubmitRequest = $.ajax({
+      url: $(this).attr('action'),
+      type: $(this).attr('method'),
+      data: $(this).serialize()
+    });
+
+    ajaxSubmitRequest.done( function(response) {
+      $('#new-recipe-partial').remove();
+      $('.new-recipe-button').show();
+      $('#recipe-end').before(response);
+    });
+
+  });
+
 }
 

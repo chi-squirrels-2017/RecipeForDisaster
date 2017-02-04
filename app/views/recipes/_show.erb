@@ -11,11 +11,11 @@
 <% if recipe.user_id == session[:user] %>
 
   <button>
-    <a href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/edit"%>>Edit Recipe</a>
+    <a href=<%="/questions/#{question.id}/recipes/#{recipe.id}/edit"%>>Edit Recipe</a>
   </button>
 
   <br>
-  <form method="post" action=<%= "/questions/#{@question.id}/recipes/#{recipe.id}" %> >
+  <form method="post" action=<%= "/questions/#{question.id}/recipes/#{recipe.id}" %> >
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Recipe">
   </form>
@@ -24,7 +24,7 @@
 <section>
 <p>THESE ARE THE COMMENTS</p>
 <button>
-  <a href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
+  <a href=<%="/questions/#{question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
 </button>
 <% if recipe.comments %>
   <% recipe.comments.each do |comment| %>

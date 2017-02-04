@@ -42,3 +42,7 @@ th {
   height: 25px;
   width: 300px;
 }
+
+.hidden {
+  display: none;
+}

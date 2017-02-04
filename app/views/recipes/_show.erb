@@ -37,11 +37,15 @@
 <section>
 <p>THESE ARE THE COMMENTS</p>
 <button>
-  <a href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
+  <a class="new-comment-button"  href=<%="/questions/#{@question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
 </button>
+
 <% if recipe.comments %>
   <% recipe.comments.each do |comment| %>
+
     <%= erb :'comments/_show', locals: { comment: comment} %>
+
   <% end %>
 <% end %>
+
 </section>

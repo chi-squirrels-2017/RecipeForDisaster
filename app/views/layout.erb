@@ -54,13 +54,34 @@
             </form>
           </li>
         <% else %>
-          <li><a href="/sessions/new">Log In</a></li>
+          <li class='login-button'><a class='login-button' href="/sessions/new">Log In</a></li>
           <li><a href="/users/new">Register</a></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+<section id='login-partition' class='hidden'>
+  <div class="ajax-login-form">
+    <form method="post" action="/sessions">
+      <p id='error-message'></p>
+      <div class="">
+        <label for="exampleInputEmail1">Username</label>
+        <br>
+        <input type="text" name="username"  placeholder="Username">
+      </div>
+      <div class="">
+        <label for="exampleInputPassword1">Password</label>
+        <br>
+        <input type="password" name="password" placeholder="Password">
+      </div>
+      <br>
+      <button type="submit" id='login-button'>Login</button>
+    </form>
+  </div>
+</section>
 <body>
 <div class="main-page">
   <%= yield %>

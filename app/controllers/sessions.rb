@@ -3,13 +3,25 @@ get "/sessions/new" do
 end
 
 post "/sessions" do
-  user = User.find_by(username: params[:username])
-  if user && user.authenticate?(params[:password])
-    session[:user] = user.id
-    redirect "/"
+  if request.xhr?
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate?(params[:password])
+      session[:user] = user.id
+      @questions = Question.all
+      erb :'/questions/index', layout: false, locals: {questions: @questions}
+    else
+      status 422
+      "Incorrect Validation"
+    end
   else
-    @error = "Incorrect login"
-    erb :"sessions/new"
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate?(params[:password])
+      session[:user] = user.id
+      redirect "/"
+    else
+      @error = "Incorrect login"
+      erb :"sessions/new"
+    end
   end
 end
 

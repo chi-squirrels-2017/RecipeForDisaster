@@ -5,6 +5,8 @@ $(document).ready(function() {
   voteBest();
   addCommentForm();
   addComment();
+  clickLogin();
+  // submitLogin();
 });
 
 
@@ -140,6 +142,45 @@ var addComment = function() {
         $('.all-comments').append('<p>' + response.comment + '</p> <p>' + response.user + '</p>');
       }
       $form.hide();
+    })
+  })
+}
+
+var clickLogin = function(){
+  $('.login-button').on('click', function(e){
+    e.preventDefault();
+    var url = $(this).attr('href');
+
+    $.ajax({
+      url: url,
+      method: "GET"
+    })
+    .done(function(){
+      $('#login-partition').removeClass('hidden');
+    })
+  })
+}
+
+var submitLogin = function(){
+  $('#login-partition').on('click', '#login-button', function(e){
+    e.preventDefault();
+    var form = $(this).closest('form');
+    var url = $(form).attr('action');
+    var method = $(form).attr('method');
+    var data = $(form).serialize();
+
+    $.ajax({
+      method: method,
+      url: url,
+      data: data
+    })
+    .done(function(response){
+      $('#login-partition').addClass('hidden');
+      $('.main-page').html(response);
+      $('.login-button').html("Welcome!");
+    })
+    .fail(function(response){
+      $('#error-message').html(response.responseText);
     })
   })
 }

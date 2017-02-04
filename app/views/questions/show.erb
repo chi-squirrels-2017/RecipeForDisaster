@@ -1,14 +1,14 @@
-<div class="container">
+  <div class="container">
 
-  <span class="main-title"><%= @question.title %></span>
+    <span class="main-title"><%= @question.title %></span>
 
-  <span class="author">by:</span>
-  <span><%= @question.user.username %></span>
-  <br><br>
-  <span class="question-title">Question: </span>
-  <span class="question-body"><%= @question.body %></span>
+    <span class="author">by:</span>
+    <span><%= @question.user.username %></span>
+    <br><br>
+    <span class="question-title">Question: </span>
+    <span class="question-body"><%= @question.body %></span>
 
-  <% if @question.user_id == session[:user] %>
+    <% if @question.user_id == session[:user] %>
 
     <form method="get" action=<%= "/questions/@question.id/edit"%>>
       <button type="submit">Edit Article</button>
@@ -20,23 +20,26 @@
       <input type="submit" value="Delete Article">
     </form>
 
-  <% end %>
-
-  <button class="new-recipe-button">
-    <a href=<%= "/questions/#{@question.id}/recipes/new" %>>Share a Recipe!</a>
-  </button>
-  <p id="comment-header">Question Comments: </p>
-  <button>
-    <a href=<%="/questions/#{@question.id}/comments/new"%>>New Comment</a>
-  </button>
-  <% if @question.comments %>
-    <% @question.comments.each do |comment| %>
-      <%= erb :'comments/_show', locals: { comment: comment} %>
     <% end %>
-  <% end %>
 
-  <% @question.recipes.each do |recipe| %>
-    <%= erb :'recipes/_show', locals: {  recipe: recipe, question: @question } %>
-  <% end %>
-  <div id="recipe-end"></div>
-</div>
+    <button class="new-recipe-button">
+      <a href=<%= "/questions/#{@question.id}/recipes/new" %>>Share a Recipe!</a>
+    </button>
+    <p id="comment-header" class="question-comments">Question Comments: </p>
+    <button>
+      <a class="new-comment-button" href=<%="/questions/#{@question.id}/comments/new"%>>New Comment</a>
+    </button>
+    <div class='all-comments'>
+      <% if @question.comments %>
+        <% @question.comments.each do |comment| %>
+        <%= erb :'comments/_show', locals: { comment: comment} %>
+        <% end %>
+      <% end %>
+      <div class="all-recipe-comments">
+        <% @question.recipes.each do |recipe| %>
+        <%= erb :'recipes/_show', locals: {  recipe: recipe, question: @question } %>
+        <% end %>
+      </div>
+      <div id="recipe-end"></div>
+    </div>
+  </div>

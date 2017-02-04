@@ -14,4 +14,7 @@ class Recipe < ActiveRecord::Base
     (self.votes.select  {|each_vote| each_vote.up_vote == false}).length
   end
 
+  def voted_as_best
+    self.update_attribute(:best_answer, true)
+  end
 end

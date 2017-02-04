@@ -11,4 +11,9 @@ class Question < ActiveRecord::Base
   def down_points
     self.votes.where(["up_vote = ?", false]).count
   end
+
+  def has_no_winning_vote
+    self.recipes.find_by(best_answer: true) == nil
+  end
+
 end

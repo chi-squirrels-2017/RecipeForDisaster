@@ -5,7 +5,7 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  if session[:user]
+  if logged_in?
     erb :'questions/new'
   else
     erb :'_404'
@@ -13,9 +13,12 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.create(params[:question])
-
-  redirect '/questions'
+  if logged_in?
+    @question = Question.create(params[:question])
+    redirect '/questions'
+  else
+    erb :'_404'
+  end
 end
 
 
@@ -35,7 +38,7 @@ end
 
 post '/questions/:question_id/votes' do
   @question = Question.find_by_id(params[:question_id])
-  if current_user && current_user.votes.where("voteable_id = #{@question.id}").count == 0
+  if logged_in? && current_user && current_user.votes.where("voteable_id = #{@question.id}").count == 0
     @question.votes.create(up_vote: params[:up_vote], user_id: current_user.id)
     # p request
     if request.xhr?

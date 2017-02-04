@@ -1,9 +1,12 @@
 $(document).ready(function() {
   upVote();
   downVote();
+  voteBest();
   addCommentForm();
   addComment();
+
 });
+
 
 var upVote = function() {
   $('.upvote-form').on('submit', function(e) {
@@ -40,6 +43,25 @@ var downVote = function() {
     .done(function(response) {
 
       $($form.find('span.down-points')).html(response.downvotes);
+    })
+  })
+}
+
+
+var voteBest = function(){
+  $('section.show-recipe').on('submit', 'form#choose-winner', function(e){
+    e.preventDefault();
+    var form = $('form#choose-winner');
+    var url = form.attr('action');
+    // var data = {best_answer: true}
+
+    $.ajax({
+      url: url,
+      method: 'PUT'
+    })
+    .done(function(response){
+      $('form#choose-winner').addClass('hidden')
+      $('this section img#winner-icon').attr('src', response)
     })
   })
 }
@@ -88,4 +110,3 @@ var addComment = function() {
     })
   })
 }
-

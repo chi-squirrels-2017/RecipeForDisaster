@@ -32,10 +32,15 @@ post '/questions/:question_id/comments' do
 end
 
 get '/questions/:question_id/recipes/:recipe_id/comments/new' do
+
   if logged_in?
     @question = Question.find_by_id(params[:question_id])
     @recipe = Recipe.find_by_id(params[:recipe_id])
-    erb :'comments/new_recipe'
+    if request.xhr?
+       erb :'comments/new_recipe', layout: false
+    else
+      erb :'comments/new_recipe'
+    end
   else
     erb :'sessions/new'
   end
@@ -47,7 +52,12 @@ post '/questions/:question_id/recipes/:recipe_id/comments' do
     @recipe = Recipe.find_by_id(params[:recipe_id])
     @comment = @recipe.comments.create(params[:comment])
     if @comment.save
-      redirect "/questions/#{@question.id}"
+      if request.xhr?
+        content_type :json
+        {comment: @comment.body, user: @comment.user.username}.to_json
+      else
+        redirect "/questions/#{@question.id}"
+      end
     else
       @errors = @comment.errors.full_messages
       erb :'comments/new_recipe'

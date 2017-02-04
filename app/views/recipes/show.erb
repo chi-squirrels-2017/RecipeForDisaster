@@ -27,10 +27,13 @@
 <button>
   <a href=<%="/questions/#{@question.id}/recipes/#{@recipe.id}/comments/new"%>>New Comment</a>
 </button>
+
+
 <% if @comments %>
   <% @comments.each do |comment| %>
   <p> <%= comment.body %> </p>
   <p> <%= comment.user.username %></p>
   <% end %>
 <% end %>
+
 </section>

@@ -36,9 +36,9 @@
       <% end %>
     <% end %>
   </div>
-
-  <% @question.recipes.each do |recipe| %>
-    <%= erb :'recipes/_show', locals: {  recipe: recipe } %>
-  <% end %>
-
+  <div class="all-recipe-comments">
+    <% @question.recipes.each do |recipe| %>
+      <%= erb :'recipes/_show', locals: {  recipe: recipe } %>
+    <% end %>
+  </div>
 </div>

@@ -76,9 +76,15 @@ var addComment = function() {
       data: data
     })
     .done(function(response) {
-      $form.hide();
       $('.new-comment-button').show();
-      $('.all-comments').append('<p>' + response.comment + '</p> <p>' + response.user + '</p>');
+      console.log(response.user)
+      console.log(response.comment)
+      if (url.includes('recipes')) {
+        $('.all-recipe-comments').append('<p>' + response.comment + '</p> <p>' + response.user + '</p>');
+      } else {
+        $('.all-comments').append('<p>' + response.comment + '</p> <p>' + response.user + '</p>');
+      }
+      $form.hide();
     })
   })
 }

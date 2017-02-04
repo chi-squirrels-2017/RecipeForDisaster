@@ -8,8 +8,6 @@ post '/questions/:question_id/recipes' do
   # TODO: clean this noise - use recipe hash inside params?
   recipe = Recipe.new(question_id: params[:question_id], user_id: params[:user_id], body: params[:recipe_body], best_answer: false)
   question = Question.find_by(id: params[:question_id])
-  p "*"*50
-  p params
   if recipe.save
     if request.xhr?
       erb :'recipes/_show', layout: false, locals: {recipe: recipe, question: question}

@@ -36,7 +36,6 @@ end
 post '/questions/:question_id/votes' do
   @question = Question.find_by_id(params[:question_id])
   @question.votes.create(up_vote: params[:up_vote])
-  # p request
   if request.xhr?
     content_type :json
     {upvotes: @question.up_points, downvotes: @question.down_points}.to_json

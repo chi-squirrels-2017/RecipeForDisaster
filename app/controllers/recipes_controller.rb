@@ -59,6 +59,15 @@ delete '/questions/:question_id/recipes/:recipe_id' do
 post '/questions/:question_id/recipes/:recipe_id/votes' do
   @question = Question.find_by_id(params[:question_id])
   @recipe = Recipe.find_by_id(params[:recipe_id])
-  @recipe.votes.create(up_vote: params[:up_vote])
-  redirect "/questions"
+  if current_user && current_user.votes.where("voteable_id = #{@recipe.id}").count == 0
+    @recipe.votes.create(up_vote: params[:up_vote], user_id: current_user.id)
+    if request.xhr?
+      content_type :json
+      {upvotes: @answer.up_points, downvotes: @answer.down_points}.to_json
+    else
+      redirect "/questions/#{params[:question_id]}"
+    end
+  end
+    redirect "/questions/#{params[:question_id]}"
+
 end

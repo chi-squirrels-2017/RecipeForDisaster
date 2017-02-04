@@ -5,6 +5,14 @@
   <p>RECIPE WRITER</p>
   <p>submitted by: <%= recipe.user.username %> </p>
 
+  <form method="post" action="/questions/<%= @question.id %>/recipes/<%= recipe.id %>/votes" class="inline upvote-form">
+  <button type="submit" name="up_vote" value="true" class="upvote-button"></button>
+  <span class='up-points'><%= recipe.up_points %></span></form>
+
+  <form method="post" action="/questions/<%= @question.id %>/recipes/<%= recipe.id %>/votes" class="inline downvote-form">
+  <button type="submit" name="up_vote" value="false" class="downvote-button"></button>
+  <span class='down-points'><%= recipe.down_points %></span></form>
+
 </section>
 
 <!-- edit/delete buttons here -->

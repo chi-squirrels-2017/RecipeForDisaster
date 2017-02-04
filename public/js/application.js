@@ -57,7 +57,7 @@ var voteBest = function(){
     })
     .done(function(response){
       $('form#choose-winner').addClass('hidden')
-      $('img#winner-icon').attr('src', response)
+      $('this section img#winner-icon').attr('src', response)
     })
   })
 }

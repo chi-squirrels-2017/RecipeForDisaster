@@ -59,8 +59,16 @@ th {
     border-left:6px solid transparent;
     border-right:6px solid transparent;
     border-top:6px solid black;
+}
 
 .hidden {
   display: none;
+}
 
+#login-partition div form {
+  width: 75;
+  right: 0;
+  margin-right: 10px;
+  z-index: 1;
+  position: fixed;
 }

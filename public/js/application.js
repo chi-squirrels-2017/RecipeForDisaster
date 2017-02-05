@@ -5,6 +5,8 @@ $(document).ready(function() {
   voteBest();
   addCommentForm();
   addComment();
+  clickLogin();
+  // submitLogin();
 });
 
 
@@ -82,19 +84,24 @@ var showRecipeForm = function() {
 }
 
 var voteBest = function(){
-  $('section.show-recipe').on('submit', 'form#choose-winner', function(e){
+  $('div.container').on('submit', 'form#choose-winner', function(e){
     e.preventDefault();
-    var form = $('form#choose-winner');
+    var form = $(this);
     var url = form.attr('action');
+    console.log(this)
     // var data = {best_answer: true}
-
     $.ajax({
       url: url,
       method: 'PUT'
     })
     .done(function(response){
+      // console.log('no refresh here')
+      // console.log(this)
+      // console.log(form)
+      // console.log(response)
+      // debugger
+      $(form).before(response)
       $('form#choose-winner').addClass('hidden')
-      $('this section img#winner-icon').attr('src', response)
     })
   })
 }
@@ -140,6 +147,45 @@ var addComment = function() {
         $('.all-comments').append('<p>' + response.comment + '</p> <p>' + response.user + '</p>');
       }
       $form.hide();
+    })
+  })
+}
+
+var clickLogin = function(){
+  $('.login-button').on('click', function(e){
+    e.preventDefault();
+    var url = $(this).attr('href');
+
+    $.ajax({
+      url: url,
+      method: "GET"
+    })
+    .done(function(){
+      $('#login-partition').removeClass('hidden');
+    })
+  })
+}
+
+var submitLogin = function(){
+  $('#login-partition').on('click', '#login-button', function(e){
+    e.preventDefault();
+    var form = $(this).closest('form');
+    var url = $(form).attr('action');
+    var method = $(form).attr('method');
+    var data = $(form).serialize();
+
+    $.ajax({
+      method: method,
+      url: url,
+      data: data
+    })
+    .done(function(response){
+      $('#login-partition').addClass('hidden');
+      $('.main-page').html(response);
+      $('.login-button').html("Welcome!");
+    })
+    .fail(function(response){
+      $('#error-message').html(response.responseText);
     })
   })
 }

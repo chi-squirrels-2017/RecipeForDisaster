@@ -13,7 +13,9 @@
 </div>
 
 
-
+  <% if @error %>
+  <p><%= @error %></p>
+  <% end %>
 <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-4">
@@ -25,7 +27,7 @@
 <div class='post-container'>
   <% @questions.each do |question| %>
 
-  <article id = "<%= question.id %>">
+  <article id ="<%= question.id %>">
 <div class="panel panel-default">
   <div class="panel-body">
     <h2><a href=<%= "/questions/#{question.id}" %>><%= question.title  %></a></h2>

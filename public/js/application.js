@@ -84,19 +84,24 @@ var showRecipeForm = function() {
 }
 
 var voteBest = function(){
-  $('section.show-recipe').on('submit', 'form#choose-winner', function(e){
+  $('div.container').on('submit', 'form#choose-winner', function(e){
     e.preventDefault();
-    var form = $('form#choose-winner');
+    var form = $(this);
     var url = form.attr('action');
+    console.log(this)
     // var data = {best_answer: true}
-
     $.ajax({
       url: url,
       method: 'PUT'
     })
     .done(function(response){
+      // console.log('no refresh here')
+      // console.log(this)
+      // console.log(form)
+      // console.log(response)
+      // debugger
+      $(form).before(response)
       $('form#choose-winner').addClass('hidden')
-      $('this section img#winner-icon').attr('src', response)
     })
   })
 }

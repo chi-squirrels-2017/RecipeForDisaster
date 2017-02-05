@@ -4,9 +4,9 @@
   <p>submitted by: <%= recipe.user.username %> </p>
   </div>
   <% if recipe.best_answer == true %>
-  <span>
+  <section id="best-recipe">
     <img id='winner-icon' src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZhNqd6H9ldLCUj6LBY3qMTh-LVM10tT_wgTyh_qVV7fEw0eJJ">
-  </span>
+  </section>
   <% end %>
 <% if logged_in? && question.user.id == session[:user] && @question.has_no_winning_vote %>
 

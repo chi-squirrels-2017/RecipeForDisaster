@@ -116,4 +116,8 @@ th {
   border-width: 1px;
 }
 
+#best-recipe {
+  display: inline;
+}
+
 

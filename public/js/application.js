@@ -94,8 +94,7 @@ var voteBest = function(){
     })
     .done(function(response){
       $('form#choose-winner').addClass('hidden')
-      debugger;
-      $('this img#winner-icon').attr('src', response)
+      $('this section img#winner-icon').attr('src', response)
     })
   })
 }

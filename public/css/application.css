@@ -44,23 +44,76 @@ th {
 }
 
 
-.upvote-button {
+/*.upvote-button {
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid black;
 
-}
+}*/
 
-.downvote-button {
+/*.downvote-button {
     width:0px;
     height:0px;
     border-left:6px solid transparent;
     border-right:6px solid transparent;
     border-top:6px solid black;
+}*/
 
 .hidden {
   display: none;
 
 }
+
+.inline {
+  display: inline;
+}
+
+#comment-header {
+  margin: 0 0 0 20px;
+  font-size: 20px;
+  color: #939191;
+}
+
+#question-new-comment-button {
+  margin: 0 0 0 20px;
+}
+
+.question-comments {
+  margin: 0 0 0 20px;
+  border-style: dotted;
+  border-width: 1px 0px 0px 0px;
+}
+
+#recipe-header {
+  font-size: 30px;
+  color: #050505;
+}
+
+.recipe-body {
+  margin: 0 0 0 25px;
+}
+
+#recipe-comment-header {
+  margin: 0 0 0 40px;
+  font-size: 20px;
+  color: #939191;
+}
+
+.recipe-comments {
+  margin: 0 0 0 20px;
+  /*border-style: dotted;
+  border-width: 1px 0px 0px 0px;*/
+}
+
+#recipe-new-comment-button {
+  margin: 0 0 0 40px;
+}
+
+.show-recipe {
+  border-style: dotted;
+  border-width: 1px;
+}
+
+

@@ -1,30 +1,28 @@
 <section class='show-recipe'>
-
-  <p>RECIPE BODY</p>
+  <div class="recipe-body panel panel-default">
+  <div class="panel-body">
   <p><%= recipe.body %> </p>
-  <p>RECIPE WRITER</p>
+  </div>
+  <div class="panel-footer recipe-footer">
   <p>submitted by: <%= recipe.user.username %> </p>
 <% if recipe.best_answer == true %>
   <section id='ajax-img'>
     <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZhNqd6H9ldLCUj6LBY3qMTh-LVM10tT_wgTyh_qVV7fEw0eJJ">
   </section>
-<% end %>
-<% if logged_in? && question.user.id == current_user.id && @question.has_no_winning_vote %>
-
-    <form id='choose-winner' method='POST' action=<%= "/questions/#{question.id}/recipes/#{recipe.id}/winners/new" %>>
-      <input type='hidden' name='_method' value='PUT'>
-      <input type='submit' value='TEH BAAAST'>
-    </form>
-
-
+  <% end %>
+<% if logged_in? && question.user.id == session[:user] && @question.has_no_winning_vote %>
+  <form id='choose-winner' method='POST' action=<%= "/questions/#{question.id}/recipes/#{recipe.id}/winners/new" %> style="display:inline">
+    <input type='hidden' name='_method' value='PUT'>
+    <input type='submit' value='Best Answer'>
+  </form>
 <% end %>
 
-  <form method="post" action="/questions/<%= question.id %>/recipes/<%= recipe.id %>/votes" class="inline upvote-form">
-  <button type="submit" name="up_vote" value="true" class="upvote-button"></button>
+  <form method="post" action="/questions/<%= question.id %>/recipes/<%= recipe.id %>/votes" class="inline upvote-form" style="display:inline">
+  <button type="submit" name="up_vote" value="true" class="upvote-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
   <span class='up-points'><%= recipe.up_points %></span></form>
 
-  <form method="post" action="/questions/<%= question.id %>/recipes/<%= recipe.id %>/votes" class="inline downvote-form">
-  <button type="submit" name="up_vote" value="false" class="downvote-button"></button>
+  <form method="post" action="/questions/<%= question.id %>/recipes/<%= recipe.id %>/votes" class="inline downvote-form"  style="display:inline">
+  <button type="submit" name="up_vote" value="false" class="downvote-button"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
   <span class='down-points'><%= recipe.down_points %></span></form>
 
 </section>
@@ -43,17 +41,21 @@
   </form>
 
 <% end %>
+  </div>
+  </div>
 <section>
-<p>THESE ARE THE COMMENTS</p>
-<button>
+<p id="recipe-comment-header">Comments: </p>
+<% if logged_in? %>
+<button id="recipe-new-comment-button" >
   <a class="new-comment-button" href=<%="/questions/#{question.id}/recipes/#{recipe.id}/comments/new"%>>New Comment</a>
 </button>
+<% end %>
 
 <% if recipe.comments %>
   <% recipe.comments.each do |comment| %>
-
+    <div class="recipe-comments">
     <%= erb :'comments/_show', locals: { comment: comment} %>
-
+    </div>
   <% end %>
 <% end %>
 

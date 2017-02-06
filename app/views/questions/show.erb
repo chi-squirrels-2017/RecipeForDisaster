@@ -10,12 +10,12 @@
 
     <% if @question.user_id == session[:user] %>
 
-    <form method="get" action=<%= "/questions/@question.id/edit"%>>
+    <form method="get" action=<%= "/questions/@question.id/edit"%> style="display:inline">
       <button type="submit">Edit Article</button>
     </form>
 
     <br>
-    <form method="post" action=<%= "/questions/@question.id" %>>
+    <form method="post" action=<%= "/questions/@question.id" %> style="display:inline">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Article">
     </form>
@@ -25,16 +25,21 @@
     <button class="new-recipe-button">
       <a href=<%= "/questions/#{@question.id}/recipes/new" %>>Share a Recipe!</a>
     </button>
-    <p id="comment-header" class="question-comments">Question Comments: </p>
-    <button>
-      <a class="new-comment-button" href=<%="/questions/#{@question.id}/comments/new"%>>New Comment</a>
-    </button>
+    <p id="comment-header">Comments: </p>
+    <% if logged_in? %>
+      <button id="question-new-comment-button" >
+        <a class="new-comment-button" href=<%="/questions/#{@question.id}/comments/new"%>>New Comment</a>
+      </button>
+    <% end %>
     <div class='all-comments'>
       <% if @question.comments %>
         <% @question.comments.each do |comment| %>
-        <%= erb :'comments/_show', locals: { comment: comment} %>
+        <ul class="list-group">
+          <%= erb :'comments/_show', locals: { comment: comment} %>
+        </ul>
         <% end %>
       <% end %>
+    <p id="recipe-header">Recipes: </p>
       <div class="all-recipe-comments">
         <% @question.recipes.each do |recipe| %>
         <%= erb :'recipes/_show', locals: {  recipe: recipe, question: @question } %>

@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  upVote();
-  downVote();
+  // upVote();
+  // downVote();
   showRecipeForm();
   voteBest();
-  addCommentForm();
-  addComment();
+  // addCommentForm();
+  // addComment();
   clickLogin();
   // submitLogin();
 });
@@ -95,11 +95,6 @@ var voteBest = function(){
       method: 'PUT'
     })
     .done(function(response){
-      // console.log('no refresh here')
-      // console.log(this)
-      // console.log(form)
-      // console.log(response)
-      // debugger
       $(form).before(response)
       $('form#choose-winner').addClass('hidden')
     })

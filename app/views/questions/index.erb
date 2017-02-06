@@ -36,7 +36,7 @@
       <button type="submit" name="up_vote" value="true" class="upvote-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
       <span class='up-points'><%= question.up_points %></span></form>
       <form method="post" action="/questions/<%= question.id %>/votes" class=" inline downvote-form">
-      <button type="submit" name="up_vote" value="false" class="downvote-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+      <button type="submit" name="up_vote" value="false" class="downvote-button"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
       <span class='down-points'><%= question.down_points %></span></form>
       <a href=<%= "/users/#{question.user.id}" %>>by: <%= question.user.username %></a>
     </div>

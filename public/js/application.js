@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  upVote();
-  downVote();
+  // upVote();
+  // downVote();
   showRecipeForm();
   voteBest();
-  addCommentForm();
-  addComment();
+  // addCommentForm();
+  // addComment();
   clickLogin();
   // submitLogin();
 });

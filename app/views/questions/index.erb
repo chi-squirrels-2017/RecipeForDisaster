@@ -28,19 +28,19 @@
   <% @questions.each do |question| %>
   <article id ="<%= question.id %>"></article>
   <div class="panel panel-default">
-  <div class="panel-body">
-    <h2><a href=<%= "/questions/#{question.id}" %>><%= question.title  %></a></h2>
+    <div class="panel-body">
+      <h2><a href=<%= "/questions/#{question.id}" %>><%= question.title  %></a></h2>
+    </div>
+    <div class="panel-footer">  
+      <form method="post" action="/questions/<%= question.id %>/votes" class=" inline upvote-form">
+      <button type="submit" name="up_vote" value="true" class="upvote-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+      <span class='up-points'><%= question.up_points %></span></form>
+      <form method="post" action="/questions/<%= question.id %>/votes" class=" inline downvote-form">
+      <button type="submit" name="up_vote" value="false" class="downvote-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+      <span class='down-points'><%= question.down_points %></span></form>
+      <a href=<%= "/users/#{question.user.id}" %>>by: <%= question.user.username %></a>
+    </div>
   </div>
-  <div class="panel-footer">  <a href=<%= "/users/#{question.user.id}" %>><%= question.user.username %></a>
-  </div>
-  </div>
-
-  <form method="post" action="/questions/<%= question.id %>/votes" class=" inline upvote-form">
-  <button type="submit" name="up_vote" value="true" class="upvote-button"></button>
-  <span class='up-points'><%= question.up_points %></span></form>
-  <form method="post" action="/questions/<%= question.id %>/votes" class=" inline downvote-form">
-  <button type="submit" name="up_vote" value="false" class="downvote-button"></button>
-  <span class='down-points'><%= question.down_points %></span></form>
   <% end %>
 </div>
 

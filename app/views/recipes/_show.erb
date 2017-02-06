@@ -11,7 +11,7 @@
 <% if logged_in? && question.user.id == session[:user] && @question.has_no_winning_vote %>
   <form id='choose-winner' method='POST' action=<%= "/questions/#{question.id}/recipes/#{recipe.id}/winners/new" %> style="display:inline">
     <input type='hidden' name='_method' value='PUT'>
-    <input type='submit' value='TEH BAAAST'>
+    <input type='submit' value='Best Answer'>
   </form>
 <% end %>
 

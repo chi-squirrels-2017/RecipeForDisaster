@@ -34,7 +34,9 @@
     <div class='all-comments'>
       <% if @question.comments %>
         <% @question.comments.each do |comment| %>
+        <ul class="list-group">
           <%= erb :'comments/_show', locals: { comment: comment} %>
+        </ul>
         <% end %>
       <% end %>
     <p id="recipe-header">Recipes: </p>

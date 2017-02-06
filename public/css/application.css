@@ -90,8 +90,7 @@ th {
 
 .question-comments {
   margin: 0 0 0 20px;
-  border-style: dotted;
-  border-width: 1px 0px 0px 0px;
+
 }
 
 #recipe-header {
@@ -121,7 +120,7 @@ th {
 
 .show-recipe {
   border-style: dotted;
-  border-width: 1px;
+  border-width: 0px;
 }
 
 #ajax-img {

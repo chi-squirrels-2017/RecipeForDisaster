@@ -1,8 +1,10 @@
 <section class='show-recipe'>
-  <div class="recipe-body">
+  <div class="recipe-body panel panel-default">
+  <div class="panel-body">
   <p><%= recipe.body %> </p>
-  <p>submitted by: <%= recipe.user.username %> </p>
   </div>
+  <div class="panel-footer recipe-footer">
+  <p>submitted by: <%= recipe.user.username %> </p>
 <% if recipe.best_answer == true %>
   <section id='ajax-img'>
     <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZhNqd6H9ldLCUj6LBY3qMTh-LVM10tT_wgTyh_qVV7fEw0eJJ">
@@ -39,6 +41,8 @@
   </form>
 
 <% end %>
+  </div>
+  </div>
 <section>
 <p id="recipe-comment-header">Comments: </p>
 <% if logged_in? %>

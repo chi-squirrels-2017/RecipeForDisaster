@@ -70,10 +70,12 @@ put '/questions/:question_id/recipes/:recipe_id' do
 end
 
 delete '/questions/:question_id/recipes/:recipe_id' do
-  if @recipe && @question && logged_in? && @recipe.user.id == current_user.id
-    recipe = Recipe.find_by(id: params[:recipe_id])
+  question = Question.find_by(id: params[:question_id])
+  recipe = Recipe.find_by(id: params[:recipe_id])
+  if logged_in? && (recipe.user.id == current_user.id)
     recipe.destroy
-    redirect '/' #redirect to previous show page
+    redirect "/questions/#{question.id}"
+    # redirect '/'
   else
     erb :'_404'
   end

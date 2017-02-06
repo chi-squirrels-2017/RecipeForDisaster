@@ -3,18 +3,16 @@
   <p><%= recipe.body %> </p>
   <p>submitted by: <%= recipe.user.username %> </p>
   </div>
-  <% if recipe.best_answer == true %>
-  <section id="best-recipe">
-    <img id='winner-icon' src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZhNqd6H9ldLCUj6LBY3qMTh-LVM10tT_wgTyh_qVV7fEw0eJJ">
+<% if recipe.best_answer == true %>
+  <section id='ajax-img'>
+    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZhNqd6H9ldLCUj6LBY3qMTh-LVM10tT_wgTyh_qVV7fEw0eJJ">
   </section>
   <% end %>
 <% if logged_in? && question.user.id == session[:user] && @question.has_no_winning_vote %>
-
-<form id='choose-winner' method='POST' action=<%= "/questions/#{question.id}/recipes/#{recipe.id}/winners/new" %> style="display:inline">
-  <input type='hidden' name='_method' value='PUT'>
-  <input type='submit' value='Best Answer'>
-</form>
-
+  <form id='choose-winner' method='POST' action=<%= "/questions/#{question.id}/recipes/#{recipe.id}/winners/new" %> style="display:inline">
+    <input type='hidden' name='_method' value='PUT'>
+    <input type='submit' value='TEH BAAAST'>
+  </form>
 <% end %>
 
   <form method="post" action="/questions/<%= question.id %>/recipes/<%= recipe.id %>/votes" class="inline upvote-form" style="display:inline">

@@ -127,4 +127,14 @@ th {
   display: inline;
 }
 
+.up-points {
+  border: solid black 1px;
+  padding: 2px;
+  background-color: #b3ffb3;
+}
 
+.down-points{
+  border: solid black 1px;
+  padding: 2px;
+  background-color: #ffb3b3;
+}

@@ -31,13 +31,20 @@
     <div class="panel-body">
       <h2><a href=<%= "/questions/#{question.id}" %>><%= question.title  %></a></h2>
     </div>
-    <div class="panel-footer">  
+    <div class="panel-footer">
+      <% if logged_in? %>
       <form method="post" action="/questions/<%= question.id %>/votes" class=" inline upvote-form">
-      <button type="submit" name="up_vote" value="true" class="upvote-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
-      <span class='up-points'><%= question.up_points %></span></form>
+        <button type="submit" name="up_vote" value="true" class="upvote-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+      </form>
+      <% end %>
+      <span class='up-points'><%= question.up_points %></span>
+
+      <% if logged_in? %>
       <form method="post" action="/questions/<%= question.id %>/votes" class=" inline downvote-form">
-      <button type="submit" name="up_vote" value="false" class="downvote-button"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
-      <span class='down-points'><%= question.down_points %></span></form>
+        <button type="submit" name="up_vote" value="false" class="downvote-button"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+      </form>
+      <% end %>
+      <span class='down-points'><%= question.down_points %></span>
       <a href=<%= "/users/#{question.user.id}" %>>by: <%= question.user.username %></a>
     </div>
   </div>
